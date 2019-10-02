@@ -40,6 +40,7 @@ Note: be sure that url https://yourserver/download/attachments/122190480/conflue
 Done!
 
 Now save the page and you`ll see a special zone for creating BPMN diagram.
+<img src="imgs/screen_2.png"/>
 In addition, you can upload existing diagrams in bpmn format (files must have .bpmn extension).
 Note: it is useful to create a special page template with embedded code snippet.
 
