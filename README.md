@@ -43,5 +43,13 @@ Now save the page and you`ll see a special zone for creating BPMN diagram.
 In addition, you can upload existing diagrams in bpmn format (files must have .bpmn extension).
 Note: it is useful to create a special page template with embedded code snippet.
 
+<h2>Create a link from diagram element</h2>
+To create a link from any diagram element:</br>
+- open it in edit mode</br>
+- select an element</br>
+- in properties panel open Extension tab</br>
+- create new custom property with name "url" and required url-address as a value</br>
+- save diagram</br>
+</br>
 P.S. Tested on Confluence version 6.8.1. If something doesn’t work, let me now in Issues!
 

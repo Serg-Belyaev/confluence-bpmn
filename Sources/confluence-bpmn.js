@@ -168,13 +168,17 @@ function drawSchema(){  //only viewer
                             // catch(e) {}
 
                             //set overlays on schema  
-                            overlays.add(comment.element_id, 'note', {
-                                position: {
-                                bottom: 5,
-                                right: 5
-                                },
-                                html: "<div title = 'Scroll down to comment' class='diagram-note' comment-tread-id = '"+comment.commentTreadId+"' onclick='scrollDownToComment(this)'>▼</div>"
-                            });
+                            try {
+                                overlays.add(comment.element_id, 'note', {
+                                    position: {
+                                    bottom: 5,
+                                    right: 5
+                                    },
+                                    html: "<div title = 'Scroll down to comment' class='diagram-note' comment-tread-id = '"+comment.commentTreadId+"' onclick='scrollDownToComment(this)'>▼</div>"
+                                });
+                            } catch(e) {
+                                console.log("Unable to create overlay for comment with element id: " + comment.element_id);
+                            }
 
                             //set hyperlinks on comments header:
                             $("#"+comment.commentTreadId).find("a.bpmn-js-confluence-comment-back-link").on("click", function(e) {centerElement(comment.element_id)});
