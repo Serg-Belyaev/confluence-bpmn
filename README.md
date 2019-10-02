@@ -26,12 +26,12 @@ Note: be sure that all users can read access to these files.
 <b>Code snippet</b>
 
 &lt;div id=&quot;bpmn_zone&quot;&gt;&lt;/div&gt;,</br>
-&lt;script src=&quot;https://yourserver/download/attachments/122190480/confluence-bpmn.js&quot;&gt;&lt;/script&gt;</br>
+&lt;script src=&quot;https://yourserver/download/attachments/122190480/confluence-bpmn.js &quot;&gt;&lt;/script&gt;</br>
 <b>End code snippet</b>
 
 Where:
 -	https://yourserver/ - your Confluence server URL
--	122190480 – page Id of the page from step 1.
+-	122190480 – pageId of the page from step 1.
 Note: be sure that url https://yourserver/download/attachments/122190480/confluence-bpmn.js is accessible. 
 
 Done!
