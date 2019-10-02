@@ -25,8 +25,8 @@ Note: be sure that all users can read access to these files.
 
 <b>Code snippet</b>
 
-&lt;div id=&quot;bpmn_zone&quot;&gt;&lt;/div&gt;
-&lt;script src=&quot;https://yourserver/download/attachments/122190480/confluence-bpmn.js&quot;&gt;&lt;/script&gt;
+&lt;div id=&quot;bpmn_zone&quot;&gt;&lt;/div&gt;,</br>
+&lt;script src=&quot;https://yourserver/download/attachments/122190480/confluence-bpmn.js&quot;&gt;&lt;/script&gt;</br>
 <b>End code snippet</b>
 
 Where:
