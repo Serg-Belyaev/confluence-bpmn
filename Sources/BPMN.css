@@ -1,0 +1,263 @@
+﻿/*html, body {
+  height: 1500px;
+  padding: 0;
+  margin: 0;
+}
+#frame {
+  width: 95%; 
+  height: 110%;
+}
+
+
+#contentBox {
+    margin-left: 10px !important;
+}
+#frame {
+      border: 10px solid white;
+}
+
+#schemasSelector{
+  border: 0px;
+}
+
+div.bjs-container {
+  border: 1px solid lightgray;
+}*/
+
+/*#schemasSelector {
+  width: 30%;
+    float: left;
+}
+#statusField {
+    padding: 5px;
+    text-align: center;
+    float: left;
+    font-size: x-large;
+    background-color: yellow;
+}
+#slider {
+    width: 30%;
+    float: right;
+}
+#slider label {
+  position: absolute;
+  width: 20px;
+  margin-top: 20px;
+  margin-left: -10px;
+  text-align: center;
+  color:gray;
+}*/
+
+.diagram-note {
+  background-color: rgba(66, 180, 21, 0.7);
+  color: White;
+  border-radius: 5px;
+  font-family: Arial;
+  font-size: 12px;
+  padding: 5px;
+  min-height: 16px;
+  width: 22px;
+  text-align: center;
+  cursor:pointer;
+}
+.diagram-note:hover {
+   background-color: darkgreen;
+}
+/*span.url {
+  color: navy;
+  font-size: x-small;
+}*/
+.diagram-add-comment {
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 22px;
+    padding: 1px;
+    width: 25px;
+    text-align: center;
+    cursor: pointer;
+    /*border: 1px solid lightgray;*/
+    color: lightgray;
+}
+
+
+
+div.diagram-add-comment:hover {
+  background-color: rgba(66, 180, 21, 0.7);
+  color: White;
+  border: 1px solid darkgreen;
+}
+
+.diagram-link {
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 1px;
+    width: 25px;
+    text-align: center;
+    cursor: pointer;
+    /*border: 1px solid lightgray;*/
+    color: lightgray;
+}
+
+.diagram-link:hover {
+  background-color: deepskyblue;
+  color: White;
+  border: 1px solid darkblue;
+}
+
+/*
+.needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {
+  stroke: rgba(66, 180, 21, 0.7) !important; 
+}
+*/
+
+.djs-element.hover .djs-outline {
+  stroke: #FF8888;
+  stroke-width: 1px;
+}
+
+/*div.PrintButton {
+
+  cursor: pointer;
+  margin: 5px;
+  text-align: center;
+  float: left;
+}*/
+
+
+/*#canvas {
+  cursor: default;
+  height: 3000px; */
+  
+  /*Размеры канваса меняются автоматически после отрисовки диаграммы */
+  
+  /*padding: 5px;
+  margin-right:200px;
+  
+  border: 1px solid lightgray;
+}*/
+
+/*.ui-widget-content {
+  background: white !important;
+}
+div.LinkDiv {
+  padding:5px;
+}
+
+#frameForDisc{
+  width: 100%; 
+  min-height: 1000px; 
+}
+
+div.LinkDiv:hover {
+  background-color: moccasin;
+  cursor: pointer;
+}
+
+#ProcessName {
+  font-size: xx-large;
+  color: navy;
+}*/
+
+
+/*
+#ProcessesTreeTab {
+  padding: 8px;
+}
+
+
+#search_input {
+    margin-bottom: 5px;
+    width: 100%;
+}
+#fileInfo {
+  font-size: medium;
+  color: grey;
+}
+
+.ui-tabs .ui-tabs-nav {
+  font-size: small;
+}
+
+div.FileProperties {
+  font-size: x-small;
+  padding: 5px;
+}
+span.DescriptionProperty {
+    background-color: lightgray;
+    padding-left: 5px;
+    margin-left: 5px;
+}*/
+
+#bpmn_zone {
+ width:100%;
+ height:800px;
+ border: 2px solid lightsteelblue;
+ background-color: white;
+}
+
+#canvas {
+ width:100%;
+ height:100%;
+}
+
+div.bpmn_buttons {
+    right: 60px;
+    cursor: pointer;
+    border: 1px solid lightgray;
+    vertical-align: middle;
+    text-align: center;
+    padding: 4px;
+    font-size: medium;
+    margin: 5px;
+    z-index: 1000;
+    background-color: aliceblue;
+}
+div.save_edit_buttons:hover {
+  border: 1px solid lightgray;
+  background-color: gray;
+}
+
+div.save_button {
+    position: relative;
+    float: right;
+    top: -55px;
+    right: -59px;
+    width: 120px;
+    height: 42px;
+}
+div.edit_button {
+  position: absolute;
+  width: 120px;
+}
+
+div.fullScreen_button {
+    width: 42px;
+    height: 42px;
+    background-image: url(/download/attachments/182180480/fullscreen.jpg);
+    position: relative;
+    float: right;
+    top: -55px;
+    right: 130px;
+}
+div.toolBarNote {
+    background-color: #ffffe6;
+    padding: 5px;
+    color: darkgrey;
+}
+#NewCommentInput {
+  width: 100%; 
+  min-height: 250px;
+}
+a.bpmn-js-confluence-comment-back-link {
+  cursor:pointer;
+}
+div.fullScreen_button_view_mode {
+    width: 32px;
+    height: 35px;
+    background-image: url(/download/attachments/182180480/fullscreen.jpg);
+    position: absolute;
+    /* float: right; */
+    /* top: -55px; */
+    right: 200px;
+}
