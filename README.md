@@ -23,16 +23,19 @@ Note: be sure that all users can read access to these files.
 - Add HTML macro (how to do: https://confluence.atlassian.com/doc/html-macro-38273085.html )
 - In HTML editor, add this code:
 
-Code snippet
+<b>Code snippet</b>
 
-<div id="bpmn_zone"></div>
-<script src="https://yourserver/download/attachments/122190480/confluence-bpmn.js"></script>
+&lt;div id=&quot;bpmn_zone&quot;&gt;&lt;/div&gt;
+&lt;script src=&quot;https://yourserver/download/attachments/122190480/confluence-bpmn.js&quot;&gt;&lt;/script&gt;
+<b>End code snippet</b>
 
 Where:
 -	https://yourserver/ - your Confluence server URL
 -	122190480 – page Id of the page from step 1.
 Note: be sure that url https://yourserver/download/attachments/122190480/confluence-bpmn.js is accessible. 
+
 Done!
+
 Now save the page and you`ll see a special zone for creating BPMN diagram.
 In addition, you can upload existing diagrams in bpmn format (files must have .bpmn extension).
 Note: it is useful to create a special page template with embedded code snippet.
