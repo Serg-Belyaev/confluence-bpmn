@@ -47,6 +47,8 @@ var mutedTypes = [ //array of bpmn-element types. Comment lines below to prohibi
 ];
 
 
+var regExpForTitle = /\w+/g;
+
 $( document ).ready(function() {
     //var version = AJS.$('meta[name=ajs-version-number]').attr('content'); // 6.8.1 //22.08.2019 //or AJS.Meta.get("version-number")
     //prepareHtmlAndScripts();
@@ -122,6 +124,7 @@ function loadScriptsForViewer() {
     $('head').append($('<link rel="stylesheet" href="/download/attachments/'+sourcesPageId+'/BPMN.css" type="text/css"/>')); //for bpmnViewer
     //$('head').append($('<script src="/download/attachments/'+sourcesPageId+'/bpmn-navigated-viewer.production.min.js"></script>')); //for viewer 
     $('head').append($('<script src="/download/attachments/'+sourcesPageId+'/bpmn-navigated-viewer.development.js"></script>')); //for viewer 
+    $('head').append($('<script src="/download/attachments/'+sourcesPageId+'/jquery.balloon.min.js"></script>')); //for balloons 
 }
 
 function prepareHtmlForViewer() {
@@ -174,14 +177,25 @@ function drawSchema(){  //only viewer
                                     bottom: 5,
                                     right: 5
                                     },
-                                    html: "<div title = 'Scroll down to comment' class='diagram-note' comment-tread-id = '"+comment.commentTreadId+"' onclick='scrollDownToComment(this)'>▼</div>"
+                                    html: "<div id = 'diagram-note-"+comment.commentTreadId+"' title = 'Scroll down to comment' class='diagram-note' comment-tread-id = '"+comment.commentTreadId+"' onclick='scrollDownToComment(this)'>▼</div>"
+                                });
+
+                                $("#diagram-note-"+comment.commentTreadId).balloon({
+                                    html: true, position: 'right',
+                                    css: {
+                                        opacity: "1",
+                                        border: "1px solid navy",
+                                        backgroundColor: '#fdfdbe',
+                                        color: "black"
+                                    },  
+                                    url: location.href +' #'+comment.commentTreadId
                                 });
                             } catch(e) {
                                 console.log("Unable to create overlay for comment with element id: " + comment.element_id);
                             }
 
                             //set hyperlinks on comments header:
-                            $("#"+comment.commentTreadId).find("a.bpmn-js-confluence-comment-back-link").on("click", function(e) {centerElement(comment.element_id)});
+                            $("#"+comment.commentTreadId).find("a.bpmn-js-confluence-comment-back-link").on("click", function(e) {centerElement(comment.element_id, comment.commentTreadId)});
                     });
                   }
                   elementRegistry = bpmnViewer.get('elementRegistry');
@@ -195,10 +209,15 @@ function drawSchema(){  //only viewer
 
 
 function scrollDownToComment(clickedDiv) {
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    };
     var thread_id = $(clickedDiv).attr("comment-tread-id");
     $([document.documentElement, document.body]).animate({
         scrollTop: $("#"+thread_id).offset().top
     }, 1000);
+
+    $($("#"+thread_id).find("div.comment")[0]).addClass("focused");
 }
 
 function getComments() {
@@ -224,7 +243,11 @@ function getComments() {
 }
 
 
-function centerElement(elementId) {
+function centerElement(elementId, commentId) {
+    //remove focused class:
+    $($("#"+commentId).find("div.comment")[0]).removeClass("focused");
+
+    //center element:
     $([document.documentElement, document.body]).animate({
         scrollTop: $("#canvas").offset().top
     }, 1000);
@@ -276,7 +299,7 @@ function prepareElement(e) {
         var isMuted = isElementMuted(businessObject.id, businessObject.$type);
         var objectIdOrFalse = businessObject.id;
         if (isMuted) objectIdOrFalse = false;
-        var objectNameForCommenting = getObjectNameForCommenting(businessObject);
+        var objectNameForCommenting = getObjectNameForCommenting(businessObject);// regExpForTitle.exec(businessObject.name); //
 
         if (objectIdOrFalse) {            
             overlays.add(objectIdOrFalse, 'note', {
@@ -305,9 +328,14 @@ function prepareElement(e) {
 }
 
 function getObjectNameForCommenting(object) {
+    var returnString;
     try {
-        return object.name.replace(/\'/g, '').replace(/\r?\n/g, '').replace("\"","");
+        returnString = object.name.replace(/[^A-Z0-9А-Я]+/gmi, " ");
     } catch (e) {
+        return object.id;
+    }
+    if (returnString) { return returnString }
+    else {
         return object.id;
     }
 }
@@ -315,9 +343,11 @@ function getObjectNameForCommenting(object) {
 function openCommentDialog(element_id, elementTitle, type) {
    $("#CommentedElementTitle-2").html(elementTitle +" ( "+type+" ) ");
    $( "#CreateComment" ).dialog({
-      autoOpen: false,
+      appendTo: "#canvas",
+    //   autoOpen: false,
       open: function(){
                       $('.ui-widget-overlay').css({"background":"black","opacity": "0.5"});
+                      $("div.ui-dialog").appendTo("#canvas"); //appendTo seems to not working...
                   },
       title: "Создать обсуждение элемента", //"Create elements discussion",//,
       closeOnEscape: true,
@@ -338,6 +368,7 @@ function openCommentDialog(element_id, elementTitle, type) {
               click: function() {
                   createDiscussion(element_id, elementTitle, document.getElementById("NewCommentInput").value);
                   $( this ).dialog( "close" );
+                  alert("Новый комментарий появится через некоторое время внизу страницы");
                   //TODO: сделать сразу новый commment без перезагрузки
                   //window.open(window.location.href, "_self");
               }
@@ -391,9 +422,21 @@ function changeGElement(element, elementType, url, blankOrSelf, name, objectIdOr
                         bottom: 25,
                         left: 2
                     },
-                    html: "<div title = '"+url+"' onclick='window.open(\""+url+"\", \"_blank\")' class='diagram-link'>▲</div>"
+                    html: "<div id='url_for_"+elementId+"' title = '"+url+"' onclick='window.open(\""+url+"\", \"_blank\")' class='diagram-link'>▲</div>"
                 });
                 $(laneTitle).css("fill", "rgb(30, 136, 229)"); //SVG text
+
+                $("#url_for_"+elementId).balloon({
+                    html: true, position: 'top',
+                    contents: '<div>'+url+'</div>' //<img src="/download/attachments/'+sourcesPageId+'/loadspinner.gif" alt="loading..." width="32" height="32">',
+                    // css: {
+                    //      maxHeight: "200px",
+                    //      maxWidth: "800px",
+                    //      opacity: "1"
+                    // },
+                    // url: url
+                });
+
             break
             default:
                 element.addEventListener('click', function(e) {
@@ -406,6 +449,16 @@ function changeGElement(element, elementType, url, blankOrSelf, name, objectIdOr
                 var djs_element = $(element).find(".djs-visual")[0];
                 var g_element = $(djs_element).children()[0];
                 $(g_element).css("stroke", "rgb(30, 136, 229)").css("stroke-width", "2px").css("fill", "rgb(187, 222, 251)").css("fill-opacity","0.95");
+                $(djs_element).balloon({
+                    html: true, position: 'top',
+                    contents: '<div>'+url+'</div>' //<img src="/download/attachments/'+sourcesPageId+'/loadspinner.gif" alt="loading..." width="32" height="32">',
+                    // css: {
+                    //      maxHeight: "200px",
+                    //      maxWidth: "800px",
+                    //      opacity: "1"
+                    // },
+                    // url: url
+                });
             break
 
             //var newId = makeid(4);
@@ -482,7 +535,7 @@ function fullScreen(){
 var htmlForEditor =   "<div class='content with-diagram' id='js-drop-zone'>"+
     "<div class='message intro'>"+
       "<div class='note'>"+
-        "Перетащите сюда файл BPMN-схемы с вашего рабочего стола или <a id='js-create-diagram' href>создайте новую схему</a>."+
+        "There is no BPMN-schema for this process. Drag and drop a schema from your desktop or <a id='js-create-diagram' href>create new one </a>."+
       "</div>"+
     "</div>"+
     "<div class='message error'>"+
