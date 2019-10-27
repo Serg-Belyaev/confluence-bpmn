@@ -20,25 +20,14 @@ With this plugin you can easily create and edit BPMN diagrams on your Wiki-pages
 9. Balloons on links and comments </br>
 
 <h2>How to implement</h2>
-1. In your Confluence, create special page for hosting source files. Get a pageId of the page.</br>
-2. Add all files from Source folder to your page as attachments.</br>
-Note: be sure that all users can read access to these files.</br>
-3. Open a page where you want to create BPMN diagram in edit mode.</br>
-- Add HTML macro (how to do: https://confluence.atlassian.com/doc/html-macro-38273085.html ) </br>
+1. In your Confluence, create special page for hosting source files. Get a pageId of this page.</br>
+2. Add all files from <a link = "tree/master/Sources">Source folder</a> to your page as attachments.</br>
+Note: be sure that all users have read access to these files.</br>
+3. Open in edit mode a page where you want to create BPMN diagram.</br>
+- Add HTML macro (how to do: https://confluence.atlassian.com/doc/html-macro-38273085.html ). Pay attantion that HTML macros are disabled by default! </br>
 - In HTML editor, add this code:</br>
 </br>
-<div style="background-color: #fcfcfc;
-    border-color: #aab8c6;
-    background: #fcfcfc;
-    border: 1px solid #ccc;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    color: #333;
-    margin: 10px 0 1em 0;
-    min-height: 20px;
-    padding: 10px 10px 10px 36px;
-    position: relative;">
+<div style="background-color: #fcfcfc; border-color: #aab8c6; background: #fcfcfc; border: 1px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;color: #333; margin: 10px 0 1em 0; min-height: 20px; padding: 10px 10px 10px 36px; position: relative;">
 <b>Code snippet</b>
 <div style="background-color:lightgrey; padding:10px; margin:10px">
 &lt;div id=&quot;bpmn_zone&quot;&gt;&lt;/div&gt;</br>
@@ -67,5 +56,5 @@ To create a link from any diagram element:</br>
 - create new custom property with name "url" and required url-address as a value</br>
 - save diagram</br>
 </br>
-P.S. Tested on Confluence version 6.8.1. If something doesn’t work, let me now in Issues!
+P.S. Tested on Confluence version 6.8.1. If something doesn’t work, let me now in <a link = "Issues">Issues!</a>
 
