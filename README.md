@@ -9,14 +9,15 @@ With this plugin you can easily create and edit BPMN diagrams on your Wiki-pages
 <img src="imgs/screen_1.png"/>
 
 <h2>Features and abilities</h2>
-1. Display interactive BPMN diagram at Confluence page
-2. Host BPMN-file as page attachment.
-3. Edit diagram via browser
-4. Comment any diagram element
-5. Full-screen mode
-6. Mini-map for big diagram in edit mode
-7. Hot keys in edit mode (like Ctrl+z)
-8. Moving and zooming canvas
+1. Display interactive BPMN diagram at Confluence page </br>
+2. Host BPMN-file as a page attachment. </br>
+3. Edit diagram via browser </br>
+4. Comment any diagram element </br>
+5. Full-screen mode </br>
+6. Mini-map for big diagram in edit mode </br>
+7. Hot keys in edit mode (like Ctrl+z) </br>
+8. Moving and zooming canvas </br>
+9. Balloons on links and comments </br>
 
 <h2>How to implement</h2>
 1. In your Confluence, create special page for hosting source files. Get a pageId of the page.</br>
@@ -25,12 +26,26 @@ Note: be sure that all users can read access to these files.</br>
 3. Open a page where you want to create BPMN diagram in edit mode.</br>
 - Add HTML macro (how to do: https://confluence.atlassian.com/doc/html-macro-38273085.html ) </br>
 - In HTML editor, add this code:</br>
+</br>
+<div style="background-color: #fcfcfc;
+    border-color: #aab8c6;
+    background: #fcfcfc;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #333;
+    margin: 10px 0 1em 0;
+    min-height: 20px;
+    padding: 10px 10px 10px 36px;
+    position: relative;">
 <b>Code snippet</b>
 <div style="background-color:lightgrey; padding:10px; margin:10px">
 &lt;div id=&quot;bpmn_zone&quot;&gt;&lt;/div&gt;</br>
 &lt;script src=&quot;https://yourserver/download/attachments/122190480/confluence-bpmn.js &quot;&gt;&lt;/script&gt;</br>
 </div>
 <b>End code snippet</b>
+</div>
 
 Where:
 -	https://yourserver/ - your Confluence server URL
