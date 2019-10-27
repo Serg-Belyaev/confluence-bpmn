@@ -21,7 +21,7 @@ With this plugin you can easily create and edit BPMN diagrams on your Wiki-pages
 
 <h2>How to implement</h2>
 1. In your Confluence, create special page for hosting source files. Get a pageId of this page.</br>
-2. Add all files from <a link = "tree/master/Sources">Source folder</a> to your page as attachments.</br>
+2. Add all files from <a href = "tree/master/Sources">Source folder</a> to your page as attachments.</br>
 Note: be sure that all users have read access to these files.</br>
 3. Open in edit mode a page where you want to create BPMN diagram.</br>
 - Add HTML macro (how to do: https://confluence.atlassian.com/doc/html-macro-38273085.html ). Pay attantion that HTML macros are disabled by default! </br>
@@ -56,5 +56,5 @@ To create a link from any diagram element:</br>
 - create new custom property with name "url" and required url-address as a value</br>
 - save diagram</br>
 </br>
-P.S. Tested on Confluence version 6.8.1. If something doesn’t work, let me now in <a link = "Issues">Issues!</a>
+P.S. Tested on Confluence version 6.8.1. If something doesn’t work, let me now in <a href = "Issues">Issues!</a>
 
