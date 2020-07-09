@@ -213,6 +213,10 @@ div.bpmn_buttons {
     z-index: 1000;
     background-color: aliceblue;
 }
+div.bpmn_buttons:hover {
+    background-color: lightsalmon;
+}
+
 div.save_edit_buttons:hover {
   border: 1px solid lightgray;
   background-color: gray;
@@ -234,19 +238,19 @@ div.edit_button {
 div.fullScreen_button {
     width: 42px;
     height: 42px;
-    background-image: url(/download/attachments/182180480/fullscreen.jpg);
     position: relative;
     float: right;
     top: -55px;
     right: 130px;
 }
+
 div.toolBarNote {
     background-color: #ffffe6;
     padding: 5px;
     color: darkgrey;
 }
 #NewCommentInput {
-  width: 100%; 
+  width: 99%; 
   min-height: 250px;
 }
 a.bpmn-js-confluence-comment-back-link {
@@ -255,9 +259,6 @@ a.bpmn-js-confluence-comment-back-link {
 div.fullScreen_button_view_mode {
     width: 32px;
     height: 35px;
-    background-image: url(/download/attachments/182180480/fullscreen.jpg);
     position: absolute;
-    /* float: right; */
-    /* top: -55px; */
     right: 200px;
 }

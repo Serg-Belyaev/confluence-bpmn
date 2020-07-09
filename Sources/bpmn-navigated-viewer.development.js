@@ -19867,7 +19867,14 @@
 	  // pinch to zoom is mapped to wheel + ctrlKey = true
 	  // in modern browsers (!)
 
-	  var isZoom = event.ctrlKey;
+	  var isZoom = "";
+		if(window.innerWidth == screen.width && window.innerHeight == screen.height) {
+				//fullScreen mode
+				isZoom = true;
+		} else {
+				isZoom = event.ctrlKey;
+		}
+		
 
 	  var isHorizontalScroll = event.shiftKey;
 
@@ -19877,9 +19884,9 @@
 	  if (isZoom) {
 	    factor *= event.deltaMode === 0 ? 0.020 : 0.32;
 	  } 
-		// else {
-	  //   factor *= event.deltaMode === 0 ? 1.0 : 16.0;
-	  // }
+		else {
+	    factor *= event.deltaMode === 0 ? 1.0 : 16.0;
+	  }
 
 	  if (isZoom) {
 			event.preventDefault();
@@ -19913,8 +19920,8 @@
 	  //       dy: factor * event.deltaY
 	  //     };
 	  //   }
-
 	  //   this.scroll(delta);
+
 	  // }
 	};
 
